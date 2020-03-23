@@ -1,0 +1,9 @@
+<view class="zxHead">
+    <view class="zx-title" >{{zx1}}</view>
+    <button size="default" type="primary"   onTouchMove = "touchOn"  data-hi="123" onTap="tapButton">
+      Button
+    </button>
+
+    <progress show-info="{{true}}" percent="{{0}}" active="true"/>
+    <progress max = "100"></progress>
+</view>

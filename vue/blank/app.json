@@ -1,0 +1,28 @@
+{
+  "pages": [
+    
+    
+    "pages/zx/zx","pages/vue/vue"
+  ],
+  "window": {
+    "defaultTitle": "My App"
+  },
+  "tabBar": {
+    "textColor": "#404040",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#F5F5F9",
+    "items": 
+    [{
+        "pagePath": "pages/vue/vue",
+        "name": "加菲",
+        "icon": "image/icon_biz.png",
+        "activeIcon": "image/icon_API_HL.png"
+    },
+    {
+        "pagePath": "pages/zx/zx",
+        "name": "zx",
+        "icon": "image/icon_API_HL.png",
+        "activeIcon": "image/icon_biz.png"
+    }]
+  }
+}

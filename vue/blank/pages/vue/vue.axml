@@ -1,0 +1,95 @@
+<view class = "vue-class">
+  <view class = "vue-class-1"  hover-class="red">vue对应class</view>
+  <button id= "vue-class-button" size="default" type="primary">vue对应Button</button>
+  <view class="vue-class-tap" onTap="getServerTime">vue对应Tap</view>
+
+  <view class = "vue-class-for" a:for="{{[zore,1,2,3]}}">{{item}}</view>
+  
+  <!--<view a:if="{{zore > -1}}"> 9</view> -->
+  <view a:if="{{zore >= 0}}"> 10 </view>
+  <view a:else>11</view>
+
+  <!--认数组的当前项的下标变量名默认为index，数组当前项的变量名默认为item
+    使用a:for-item可以指定数组当前元素的变量名。
+    使用a:for-index可以指定数组当前下标的变量名
+  -->
+
+  <!--用block包起来做一个总View-->
+  <block a:if="{{condition}}"> 
+    <view>22</view>
+    <view>33</view>
+  </block>
+
+  <view class="vue-class-afor" a:for="{{array}}">
+    {{index}}:{{item.message}}
+  </view>
+
+  <view class = "container">
+    <!--<view a:if="{{list}}" a:key="*this">-->
+    <view a:if="{{list}}"  key="{{item}}">
+      <view onTap="bring" data-hi = "{{item}}">
+        {{ item }} :bring to font
+      </view>
+      
+    </view>
+  </view>
+
+<block>
+  <view class = "view-class-icon">
+    <icon type="success_no_circle" size = "20" />
+    <text  onTap="taptap">{{taptapStr}}</text>
+  </view>
+</block>
+
+<button size="mini" type="primary" plain="true" hover-class="red" hover-stay-time="3000">Button</button>
+
+
+<view id="tapTest" data-hi="Dingtalk" onTap="tapName">
+  <view id="tapTestInner" data-hi="DingtalkInner">
+    Click me! 
+  </view>
+</view>
+
+<view class="spliceData" >
+  <view a:for="{{a.b}}" key="{{item}}" >
+    {{item}}
+  </view>
+</view>
+
+
+<swiper
+  indicator-dots="{{indicatorDots}}"
+  indicator-color="green"
+  indicator-active-color="yellow"
+  current=""
+  duration="1000"
+  autoplay="{{autoplay}}"
+  interval="{{interval}}"
+  circular="true"
+  onChange=""
+  
+>
+  <block a:for="{{background}}">
+    <swiper-item>
+      <view class="swiper-item bc_{{item}}"></view>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="btn-area">
+  <button class="btn-area-button" type="default" onTap="changeIndicatorDots">indicator-dots</button>
+  <button class="btn-area-button" type="default" onTap="changeAutoplay">autoplay</button>
+</view>
+<slider onChange="intervalChange" value="{{interval}}" show-value min="2000" max="10000"/>
+<view class="section__title">interval</view>
+
+
+
+
+
+
+
+
+
+
+</view>
+

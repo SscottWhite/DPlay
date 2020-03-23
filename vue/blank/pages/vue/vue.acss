@@ -1,0 +1,22 @@
+.vue-class{
+  font: 100px;
+}
+
+
+#vue-class-button{
+  font: caption;
+}
+
+.vue-class-tap{
+  color: crimson;
+}
+
+.vue-class-afor{
+  border: 5px;
+  border-color: black;
+}
+
+.red{
+  background-color: brown;
+  font: 500px; 
+}
