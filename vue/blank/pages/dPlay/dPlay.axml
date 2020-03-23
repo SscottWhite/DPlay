@@ -1,3 +1,24 @@
 <view class="getApp">
    {{First}}
 </view>
+
+<!--
+
+disable-scroll     Boolean  false   是否阻止区域内滚动页面
+hover-class        String           点击时添加的样式类
+hover-start-time   Number           按住多久后出现点击状态，单位毫秒
+hover-stay-time    Number           松开后点击状态保留时间，单位毫秒
+hidden             boolean  false   是否隐藏
+class              String           自定义样式名
+style              String           内联样式
+animation                           用于动画，详见 dd.createAnimation
+onTap             EventHandle       点击
+onTouchStart      EventHandle       触摸动作开始
+onTouchMove       EventHandle       触摸后移动
+onTouchEnd        EventHandle       触摸动作结束
+onTouchCancel     EventHandle       触摸动作被打断，如来电提醒，弹窗
+onLongTap         EventHandle       长按 500ms 之后触发，触发了长按事件后进行移动将不会触发屏幕的滚动
+-->
+<view class="view-class"  hover-class="view-hover-class">
+    {{Second}}
+</view>

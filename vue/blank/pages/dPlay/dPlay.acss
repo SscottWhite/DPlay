@@ -2,3 +2,7 @@
   text-align: center;
   /* padding-left: 50px;*/
 }
+view-hover-class{
+   text-align: left;
+   text-indent: 2px;
+}

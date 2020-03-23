@@ -3,7 +3,8 @@ var app = getApp() //全局变量
 
 Page({    
     data:{
-      First:app.globalData.foo
+      First:   app.globalData.foo,
+      Second:  "scond"
     },
     onLoad(query){
       console.log("你好");
