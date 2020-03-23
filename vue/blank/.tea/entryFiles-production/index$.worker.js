@@ -22,6 +22,8 @@ self.$global = AFAppX.$global;
 
 function success() {
 require('../../app');
+require('../../pages/dPlay/dPlay');
+require('../../pages/zx/zx');
 require('../../pages/vue/vue');
 }
 self.bootstrapApp ? self.bootstrapApp({ success }) : success();
