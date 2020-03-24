@@ -33,9 +33,10 @@ duration              	Number	  500(ms)	滑动动画时长
 interval              	Number	  5000(ms)	自动切换时间间隔
 circular               	Boolean	  false 	是否启用无限滑动
 vertical              	Boolean	  false 	滑动方向是否为纵向
-onChange	              Function	否	 current 改变时会触发，event.detail = {current: current}
+onChange	              Function	否	 current 改变时会触发，
+                       事件新增内容****event.detail = {current: current}
 -->
-<swiper indicator-dots="{{true}}" >
+<swiper indicator-dots="{{true}}"  class="swiper-class">
   <block a:for="{{['#4A90E2','#F5A623']}}">
     <!--swiper-item只包含在这个里面-->
     <swiper-item >
@@ -43,3 +44,79 @@ onChange	              Function	否	 current 改变时会触发，event.detail =
     </swiper-item>
   </block>
 </swiper>
+
+<!--滚动模块
+class             String  外部样式名
+style             String  内联样式名
+scroll-x          Boolean false   是否允许横向滚动
+scroll-y          Boolean false   是否允许纵向滚动
+upper-threshold   Number  50 距顶部/左边多少距离时（px）触发
+lower-threshold   Number  50 距底部/右边多少距离时（px）触发
+scroll-top        Number  竖向滚动条位置
+scroll-left       Number  横向滚动条位置
+scroll-into-view  String  值为某个子元素的 id，滚动到该元素，元素顶部对齐滚动区域顶部
+scroll-with-animation    Booleanfalse   是否在设置滚动条位置时使用动画过渡
+onScrollToUpper  EventHandle  滚动到顶部/左边时触发
+onScrollToLower  EventHandle  滚动到底部/右边时触发
+onScroll         EventHandle  滚动时触发  
+              事件新增内容****event.detail = {scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY}
+
+
+Tips
+（1）scroll-into-view 的优先级高于 scroll-top
+（2）在滚动 scroll-view 时会阻止页面回弹，所以在 scroll-view 中滚动，是无法触发 onPullDownRefresh
+（3）使用竖向滚动时，需要给一个固定高度，通过 acss 设置 height。
+-->
+<scroll-view class="scroll-view-class" scroll-y="true" onScrollToUpper="scrollupper">
+    <image mode="scaleToFill" src="image/icon_biz.png"/>
+    <image mode="scaleToFill" src="image/icon_API_HL.png"/>
+</scroll-view>
+
+<!--
+selectable Boolean false 是否可选
+class      String        样式名
+style      String        内联样式
+-->
+<text class="text-class" selectable="true">
+  text
+</text>
+
+<!--
+type   String         icon 类型，有效值： 
+                info, warn, waiting, cancel, download, search, clear, success, success_no_circle
+size   Number  23    icon 大小，单位px
+color  Color         icon 颜色，同 css 的 color
+-->
+<icon class="icon-class" size="12px" type="success"></icon>
+
+<!--
+percent       Float            百分比(0~100)
+show-info     Boolean  false   在右侧显示百分比值
+stroke-width  Number   6       线的粗细，单位 px
+activeColor   Color    #09BB07 已选择的进度条颜色
+backgroundColor Color          未选择的进度条颜色 
+active        Boolean  false   从左往右是否进行加载动画
+-->
+<progress show-info="{{true}}" percent="{{90}}" class="progress-class">
+   progress
+</progress>
+
+<!--
+size       String    default   有效值 default, mini
+open-type  String         开放能力(1.1.0) 
+                          share  触发自定义分享，可使用 canIUse('button.open-type.share') 判断
+type       String    default  按钮的样式类型，有效值 primary, default, warn
+plain      Boolean   false     是否镂空
+disabled   Boolean   false     是否禁用
+loading    Boolean   false     按钮文字前是否带 loading 图标
+onTap      EventHandle         点击
+form-type  String              有效值：submit, reset，用于表单组件，点击分别会触发 submit/reset 事件
+hover-class  String  (默认值)button-hover    按钮按下去的样式类。hover-class="none" 时表示没有点击态效果
+                      button-hover 默认为 {background-color: rgba(0, 0, 0, 0.1); opacity: 0.7;}
+hover-start-time  Number  20    按住后多少时间后出现点击状态，单位毫秒
+hover-stay-time   Number  70     手指松开后点击状态保留时间，单位毫秒
+-->
+<button size="default" type="primary" plain="false" loading="true" hover-class="hoverclass">
+  Button
+</button>
+

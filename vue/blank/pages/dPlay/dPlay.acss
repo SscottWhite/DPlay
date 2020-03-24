@@ -6,3 +6,19 @@ view-hover-class{
    text-align: left;
    text-indent: 2px;
 }
+
+.scroll-view-class{
+  height: 50px;
+}
+
+.text-class{
+  font-size: 12px;
+}
+
+.icon-class{
+
+}
+
+.progress-class{
+  
+}

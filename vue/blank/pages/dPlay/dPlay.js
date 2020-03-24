@@ -31,7 +31,9 @@ Page({
     },
     retu(){
       dd.redirectTo({url:"/pages/vue/vue"})
-    }
+    },
   
-
+  scrollupper(e){
+    alert(e.detail);
+  }
 })
