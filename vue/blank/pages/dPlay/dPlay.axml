@@ -116,7 +116,225 @@ hover-class  String  (默认值)button-hover    按钮按下去的样式类。ho
 hover-start-time  Number  20    按住后多少时间后出现点击状态，单位毫秒
 hover-stay-time   Number  70     手指松开后点击状态保留时间，单位毫秒
 -->
-<button size="default" type="primary" plain="false" loading="true" hover-class="hoverclass">
+<button   class="button-class" size="default" type="primary" plain="false" loading="true" hover-class="hoverclass">
   Button
 </button>
 
+<!--
+表单，用于将组件内的用户输入的 <textarea>、 <switch/>、 <input/> 、
+  <checkbox-group/>、<slider/>、<radio-group/>、<picker/> 等组件提交。
+
+当点击 form 表单中 formType 为 submit 的 button 组件时，会将表单组件中的 value 值进行提交，
+需要在表单组件中加上 name 来作为 key。
+
+onSubmit EventHandle  携带 form 中的数据触发 submit 事件，
+                event.detail = {value : {'name': 'value'}  }
+onReset  EventHandle  表单重置时会触发 reset 事件
+class    String       外部样式名
+style    String       内联样式
+-->
+<form class="form-class" onSubmit="onmit" onReset="onRe"> 
+  <view class="section section_gap">
+    <view class="section__title">switch</view>
+    <switch name="switch"/>
+  </view>
+  <view class="section section_gap">
+    <view class="section__title">slider</view>
+    <slider name="slider" show-value ></slider>
+  </view>
+  <view class="section">
+    <view class="section__title">input</view>
+    <input name="input" placeholder="please input here" />
+  </view>
+  <view class="section section_gap">
+    <view class="section__title">radio</view>
+    <radio-group name="radio-group">
+      <label><radio value="radio1"/>radio1</label>
+      <label><radio value="radio2"/>radio2</label>
+    </radio-group>
+  </view>
+  <view class="section section_gap">
+    <view class="section__title">checkbox</view>
+    <checkbox-group name="checkbox">
+      <label><checkbox value="checkbox1"/>checkbox1</label>
+      <label><checkbox value="checkbox2"/>checkbox2</label>
+    </checkbox-group>
+  </view>
+  <view class="form-view-class">
+    <button  form-type="submit">提交</button>
+    <button  form-type="reset">取消</button>
+  </view>
+</form>
+
+<!--
+Label 可以用来改进表单组件的可用性，使用 for 属性找到对应组件的 id，或者将组件放在该标签下，当点击时，就会聚焦对应的组件。
+for 优先级高于内部组件，内部有多个组件的时候默认触发第一个组件。
+目前可以绑定的控件有：<checkbox/>, <radio/>, <input/>, <textarea/>
+
+for    String  绑定组件的 id
+class  String  外部样式
+style  String  内联样式
+-->
+<label>
+  Label
+  <checkbox value="aaa"/>
+  <radio value="aaaa"/>
+  <input placeholder="Input" />
+  <textarea placeholder="textarea"></textarea>
+</label>
+
+<!--
+value   String         初始内容
+name    String         组件名字，用于表单提交获取数据
+class   String         外部样式名
+style   String         内联样式
+type    String   text    input 的类型，有效值：text、search
+password    Boolean  false  是否是密码类型
+placeholder String          占位符  
+disabled    Boolean  false  是否禁用 
+maxlength   Number   140    最大长度
+onInput     EventHandle     键盘输入时触发input事件，event.detail = {value: value}
+onConfirm   EventHandle     点击键盘完成时触发，event.detail = {value: value}
+onFocus     EventHandle     聚焦时触发，event.detail = {value: value}
+onBlur      EventHandle     失去焦点时触发，event.detail = {value: value}
+-->
+<input placeholder="Input" />
+
+
+<!--
+name          String    组件名字，用于表单提交获取数据
+value         String    初始内容
+placeholder   String    占位符
+class         String    样式名
+style         String    内联样式
+disabled      Boolean   false    是否禁用
+maxlength     Number    140      最大长度，当设置为-1时不限制最大长度
+focus         Boolean   false    获取焦点
+auto-height   Boolean   false    是否自动增高
+onInput       EventHandle   
+键盘输入时触发，event.detail = {value: value}，可以直接 return 一个字符串以替换输入框的内容
+onFocus       EventHandle
+输入框聚焦时触发 event.detail = {value: value}
+onBlur        EventHandle
+输入框失去焦点时触发，event.detail = {value: value}
+onConfirm     EventHandle
+点击完成时触发，event.detail = {value: value}
+-->
+<textarea placeholder="Input multiple lines"></textarea>
+
+<!--
+radio-group:
+onChange   EventHandle    选中项发生变化时触发，event.detail = {value: 选中项radio的value}
+name       String         组件名字，用于表单提交获取数据
+
+radio:
+value String 组件值，选中时 change 事件会携带的 value
+checked Boolean false 当前是否选中
+disabled Boolean false 是否禁用
+-->
+<radio-group class="radio-group-class">
+  <label a:for="{{items}}" onTap="radioGroupTap">
+    <radio class="single-radio-class" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+  </label>
+</radio-group>
+
+
+<!--
+checkbox-group:
+name     String       组件名字，用于表单提交获取数据
+onChange EventHandle  选中项发生改变时触发，detail = {value: 选中的checkbox项value的值}
+
+checkbox:
+value     String           组件值，选中时 change 事件会携带的 value
+checked   Boolean  false   当前是否选中，可用来设置默认选中
+disabled  Boolean  false   是否禁用
+onChange  EventHandle     组件发生改变时触发，detail = {value: 该 checkbox 是否 checked}
+-->
+<checkbox-group class="checkbox-group-class">
+  <!--  <label a:for="{{[{value:'spring', label:'Spring', checked:true}, {value:'summer', label:'Summer'}]}}">-->
+  <label a:for="{{items}}"> 
+    <checkbox class="checkbo" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+  </label>
+</checkbox-group>
+
+<!--
+name     String    组件名字，用于表单提交获取数据
+checked  Boolean   是否选中
+disabled Boolean   是否禁用
+color    String    组件颜色
+onChange EventHandle  checked   改变时触发，event.detail={ value:checked}
+-->
+<switch name="switch-name" checked="{{false}}" class="switch-class"/>
+
+
+
+<!--
+name       String       组件名字，用于表单提交获取数据
+min        Number   0   最小值
+max        Number  100  最大值
+step       Number   1   步长，值必须大于 0，并可被(max - min)整除
+disabled   Boolean false  是否禁用
+value      Number   0    当前取值
+show-value Boolean false   是否显示当前value
+activeColor      String   #108ee9  已选择的颜色
+backgroundColor  String   #ddd  背景条的颜色
+trackSize   Number   4  轨道线条高度
+handleSize  Number  22  滑块大小
+handleColor     String   #fff   滑块填充色
+onChange   EventHandle   完成一次拖动后触发，event.detail = {value: value}
+-->
+<!--<slider value="20" min="1" max="100" step="1"></slider>-->
+<slider value="33" onChange="sliderchange" min="25" max="50" show-value
+    backgroundColor="#FFAA00" activeColor="#00aaee" trackSize="2" handleSize="6" handleColor="blue" />
+
+
+
+<!--
+value           Number       Array 数字表示 picker-view-column 中对应的 index （从 0 开始）
+indicatorStyle  String       选中框样式
+onChange        EventHandle  滚动选择value
+                      改变时触发，event.detail = {value: value}；value为数组，
+                      表示 picker-view 内的 picker-view-column index 索引，从 0 开始
+-->
+<picker-view class="picker-view-class"> 
+  <picker-view-column>
+    <view>2013</view>
+    <view>2014</view>
+  </picker-view-column>
+  <picker-view-column>
+    <view>Spring</view>
+    <view>Summer</view>
+  </picker-view-column>
+</picker-view>    
+
+<!--
+range     	String[] / Object[]	[]	    String[] 时表示可选择的字符串列表 Object[] 时需指定 range-key 表示可选择的字段
+range-key	  String		 当 range 是一个 Object[] 时，通过 range-key 来指定 Object 中 key 的值作为选择器显示内容
+value	      Number		表示选择了 range 中的第几个（下标从 0 开始）
+onChange	  EventHandle		value 改变时触发，event.detail = {value: value}
+disabled	  Boolean	      false	   是否禁用
+-->
+<picker onChange="onchange" range="{{list}}" range-key="name" value="{{index}}">
+  <view>
+    <!--其实是上面的index的值通过onchange方法赋值到了listIndex,获取了这个name-->
+      {{list[listIndex].name}}
+  </view>
+</picker>
+
+
+
+
+<!--
+hover-class       String   none     点击时附加的类
+hover-start-time  Number   按住多长时间后出现点击状态，单位毫秒
+hover-stay-time   Number   手指松开后点击状态保留时间，单位毫秒
+url               String   应用内的跳转链接
+open-type         String   navigate   跳转方式
+
+open-type 有效值：
+navigate      对应 dd.navigateTo 的功能
+redirect      对应 dd.redirectTo 的功能
+switchTab     对应 dd.switchTab 的功能
+navigateBack  对应 dd.navigateBack 的功能
+-->
+<navigator url="/pages/dPlay/dPlay" open-type="redirect" >Navigate</navigator>
