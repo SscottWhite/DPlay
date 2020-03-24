@@ -2,8 +2,7 @@
    {{First}}
 </view>
 
-<!--
-
+<!--视图层
 disable-scroll     Boolean  false   是否阻止区域内滚动页面
 hover-class        String           点击时添加的样式类
 hover-start-time   Number           按住多久后出现点击状态，单位毫秒
@@ -19,6 +18,28 @@ onTouchEnd        EventHandle       触摸动作结束
 onTouchCancel     EventHandle       触摸动作被打断，如来电提醒，弹窗
 onLongTap         EventHandle       长按 500ms 之后触发，触发了长按事件后进行移动将不会触发屏幕的滚动
 -->
-<view class="view-class"  hover-class="view-hover-class">
+<view class="view-class"  hover-class="view-hover-class" style="background-color:red">
     {{Second}}
 </view>
+
+
+<!-- 滑动模块
+indicator-dots     	    Boolean	  false	  是否显示指示点
+indicator-color	        Color	    rgba(0, 0, 0, .3)	指示点颜色
+indicator-active-color  Color  	  #000	当前选中的指示点颜色
+autoplay	              Boolean	  false	是否自动切换
+current                	Number	  0	    当前页面的 index
+duration              	Number	  500(ms)	滑动动画时长
+interval              	Number	  5000(ms)	自动切换时间间隔
+circular               	Boolean	  false 	是否启用无限滑动
+vertical              	Boolean	  false 	滑动方向是否为纵向
+onChange	              Function	否	 current 改变时会触发，event.detail = {current: current}
+-->
+<swiper indicator-dots="{{true}}" >
+  <block a:for="{{['#4A90E2','#F5A623']}}">
+    <!--swiper-item只包含在这个里面-->
+    <swiper-item >
+      <view style="background-color: {{item}};width:100%;height:300rpx"/>
+    </swiper-item>
+  </block>
+</swiper>

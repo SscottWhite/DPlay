@@ -4,7 +4,8 @@ var app = getApp() //全局变量
 Page({    
     data:{
       First:   app.globalData.foo,
-      Second:  "scond"
+      Second:  "scond",
+      true:    true
     },
     onLoad(query){
       console.log("你好");
