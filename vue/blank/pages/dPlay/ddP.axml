@@ -1,0 +1,104 @@
+<view class="v1">
+  <!--请求返回的整体数据 
+    默认请求
+    {
+    "status": 200, 
+    "headers": {
+        "Access-Control-Allow-Credentials": "true", 
+        "Access-Control-Allow-Origin": "*", 
+        "Connection": "close", 
+        "Content-Length": "693", 
+        "Content-Type": "application/json", 
+        "Date": "Wed, 25 Mar 2020 02:50:03 GMT", 
+        "Server": "gunicorn/19.9.0"
+    }, 
+    "data": {
+        "args": { }, 
+        "data": "", 
+        "files": { }, 
+        "form": {
+            "from": "DD", 
+            "production": "DTalk"
+        }, 
+        "headers": {
+            "Accept-Encoding": "gzip, deflate", 
+            "Content-Length": "24", 
+            "Content-Type": "application/x-www-form-urlencoded", 
+            "Cookie": "", 
+            "Host": "httpbin.org", 
+            "Referer": "https://2021001143684324.eco.dingtalkapps.com/index.html#pages/dPlay/ddP", 
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36", 
+            "X-Amzn-Trace-Id": "Root=1-5e7ac6db-98bc132056132de80fb27c88"
+        }, 
+        "json": null, 
+        "origin": "58.210.19.171", 
+        "url": "https://httpbin.org/post"
+    }
+}
+-->
+<!--  请求"application/json"
+  {
+    "status": 200, 
+    "headers": {
+        "Access-Control-Allow-Credentials": "true", 
+        "Access-Control-Allow-Origin": "*", 
+        "Connection": "close", 
+        "Content-Length": "716", 
+        "Content-Type": "application/json", 
+        "Date": "Wed, 25 Mar 2020 02:56:51 GMT", 
+        "Server": "gunicorn/19.9.0"
+    }, 
+    "data": {
+        "args": { }, 
+        "data": "{\"from\":\"DD\",\"production\":\"DTalk\"}", 
+        "files": { }, 
+        "form": { }, 
+        "headers": {
+            "Accept-Encoding": "gzip, deflate", 
+            "Content-Length": "34", 
+            "Content-Type": "application/json", 
+            "Cookie": "", 
+            "Host": "httpbin.org", 
+            "Referer": "https://2021001143684324.eco.dingtalkapps.com/index.html#pages/dPlay/ddP", 
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.96 Safari/537.36", 
+            "X-Amzn-Trace-Id": "Root=1-5e7ac873-a405da62d163dedb0970a837"
+        }, 
+        "json": {
+            "from": "DD", 
+            "production": "DTalk"
+        }, 
+        "origin": "58.210.19.171", 
+        "url": "https://httpbin.org/post"
+    }
+}
+-->
+  <button class="BR" size="default" type="primary" onTap="onReq">
+     dd.request
+  </button>
+
+  <button class="BU" size="default" type="primary" onTap="upload">
+    dd.uploadFile
+  </button>
+
+  <button class="BD" size="default" type="primary" onTap="download">
+    dd.downloadFile
+  </button>
+
+  <button class="BCI" size="default" type="primary" onTap="chooseImage">
+     dd.chooseImage
+  </button>
+
+  <button class="BPI" size="default" type="primary" onTap="previewImage">
+    dd.previewImage
+  </button>
+
+  <button class="BSI" size="default" type="primary" onTap="saveImage">
+    dd.saveImage  
+  </button>
+
+  <button class="BEI" size="default" type="primary" onTap="expressImage">
+    dd.expressImage
+  </button>
+
+  
+</view>

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/dPlay/ddP",
     "pages/dPlay/dPlay",
     "pages/zx/zx",
     "pages/vue/vue"
@@ -19,8 +20,8 @@
     [{
         "pagePath": "pages/vue/vue",
         "name": "vue",
-        "icon": "image/icon_biz.png",
-        "activeIcon": "image/icon_API_HL.png"
+        "icon": "image/icon_API_HL.png",
+        "activeIcon": "image/icon_biz.png"
     },
     {
         "pagePath": "pages/zx/zx",
@@ -31,6 +32,12 @@
     {
         "pagePath": "pages/dPlay/dPlay",
         "name": "dPlay",
+        "icon": "image/icon_API_HL.png",
+        "activeIcon": "image/icon_biz.png"
+    },
+    {
+        "pagePath": "pages/dPlay/ddP",
+        "name": "ddP",
         "icon": "image/icon_API_HL.png",
         "activeIcon": "image/icon_biz.png"
     }]
