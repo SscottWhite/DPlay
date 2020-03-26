@@ -15,9 +15,11 @@ Page({
        b:[1,2,3,4]
       }
   },
-  onLoad(){
-      this.$spliceData({"a.b":[1,1,5,6]})  //从第一位开始, 删除一个(第一个不算),再在这个1后面加5,6
-      
+  onLoad(query){
+      this.$spliceData({"a.b":[1,1,5,6]});  //从第一位开始, 删除一个(第一个不算),再在这个1后面加5,6
+      dd.alert({
+          content: JSON.stringify(query),
+      });
   },
 
   getServerTime(){

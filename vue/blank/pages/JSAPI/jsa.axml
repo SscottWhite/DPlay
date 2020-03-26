@@ -2,4 +2,7 @@
     <button onTap="onRecorder" size="default" type="primary">
         onRecorder
     </button>
+    <button onTap="getAuth" size="default" type="primary">
+      getAuth
+    </button>
 </view>

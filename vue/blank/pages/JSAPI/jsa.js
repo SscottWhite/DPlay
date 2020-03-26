@@ -33,6 +33,24 @@ dd.chooseVideo 拍摄视频或从手机相册中选视频
               })
           }
       })
-  }
+  },
   
+  getAuth : () => {
+    dd.getAuthCode({
+       success: ({ authCode }) => {
+        dd.alert({
+          content: authCode,
+        });
+      },
+    })
+  },
+
+  /**
+   * dd.navigateTo 保留当前页面，跳转到应用内的某个指定页面，可以使用 dd.navigateBack 返回到原来页面。
+                  (注意：页面最大深度为5，即可连续调用 5 次 navigateTo)
+    dd.redirectTo
+    dd.navigateBack
+    dd.reLaunch
+    dd.setNavigationBar
+   */
 })
