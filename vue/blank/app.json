@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/JSAPI/jsa",
     "pages/dPlay/ddP",
     "pages/dPlay/dPlay",
     "pages/zx/zx",
@@ -37,6 +38,12 @@
     },
     {
         "pagePath": "pages/dPlay/ddP",
+        "name": "ddP",
+        "icon": "image/icon_API_HL.png",
+        "activeIcon": "image/icon_biz.png"
+    },
+    {
+        "pagePath": "pages/JSAPI/jsa",
         "name": "ddP",
         "icon": "image/icon_API_HL.png",
         "activeIcon": "image/icon_biz.png"

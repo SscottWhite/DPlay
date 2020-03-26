@@ -1,0 +1,5 @@
+<view>
+    <button onTap="onRecorder" size="default" type="primary">
+        onRecorder
+    </button>
+</view>
