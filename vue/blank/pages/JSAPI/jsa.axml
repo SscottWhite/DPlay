@@ -20,5 +20,15 @@
     <button onTap="animationTap" size="default" type="primary">
       animationTap
     </button>
-    
+    <view class="form-row-label">密码键盘</view>
+      <view class="form-row-content">
+        <input class="input" password type="text" onInput="bindHideKeyboard" placeholder="输入 123 自动收起键盘" />
+      </view>
+      <view class="form-row-label">数字键盘</view>
+      <view class="form-row-content">
+        <input class="input" type="digit" onInput="bindHideKeyboard" placeholder="输入 123 自动收起键盘" />
+      </view>
+      <!--scroll up-->
+      <input type="text" placeholder="key" name="key" value="{{scrollTop}}" onInput="scrollTopChange"></input>
+      <view style="height:1000px"/>
 </view>

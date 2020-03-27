@@ -1,5 +1,8 @@
 Page({
-   
+    data:{
+      scrollTop:0
+    },
+    
 /**
 dd.getRecorderManager  获取当前小程序全局唯一的录音管理器 recordManager。
 const recorderManager = dd.getRecorderManager()
@@ -181,7 +184,61 @@ dd.chooseVideo 拍摄视频或从手机相册中选视频
      this.setData({ 
        animation1: this.animation1.export() 
     })   
-  }
-  
+  },
 
+  /**
+   * dd.createCanvasContext(canvasId)   创建 canvas 绘图上下文
+   *        canvasId  	String   	定义在<canvas/>上的 id
+      toTempFilePath   把当前画布的内容导出生成图片，并返回文件路径。
+      setTextAlign     textAlign 是 Canvas 2D API 描述绘制文本时，文本的对齐方式的属性。注意，该对齐是基于
+      setTextBaseline  textBaseline 是 Canvas 2D API 描述绘制文本时，当前文本基线的属性。
+      setFillStyle     设置填充色。  如果没有设置 fillStyle，则默认颜色为 black。
+      setStrokeStyle   设置边框颜色。 如果没有设置 strokeStyle，则默认颜色为 black。
+      setShadow        设置阴影样式。 如果没有设置，offsetX 的默认值为 0， offsetY 的默认值为 0， blur 的默认值为 0，color 的默认值为 black。
+      createLinearGradient    创建一个线性的渐变色。 需要使用 addColorStop() 来指定渐变点，至少需要两个。
+      createCircularGradient  创建一个圆形的渐变色。起点在圆心，终点在圆环。需要使用 addColorStop() 来指定渐变点，至少需要两个。
+      addColorStop     创建一个颜色的渐变点。小于最小 stop 的部分会按最小 stop 的 color 来渲染，大于最大 stop 的部分会按最大 stop 的 color 来渲染。需要使用 addColorStop() 来指定渐变点，至少需要两个
+      setLineWidth     设置线条的宽度。
+      setLineCap       设置线条的端点样式.
+      setLineJoin      设置线条的交点样式。
+      setMiterLimit    设置最大斜接长度，斜接长度指的是在两条线交汇处内角和外角之间的距离。 当 setLineJoin() 为 miter 时才有效。超过最大倾斜长度的，连接处将以 lineJoin 为 bevel 来显示      
+   */
+
+
+    /**
+     * onKeyboardShow   监听键盘弹起事件，并返回键盘高度。键盘高度可以在回调参数的data.height参数中取到，单位为px。需要在page中设置该回调。
+     * onKeyboardHide   监听键盘收起事件。需要在page中设置该回调
+       dd.hideKeyboard  隐藏键盘。
+     */
+    bindHideKeyboard(e) {
+    if (e.detail.value === "123") {
+      // 收起键盘
+      dd.hideKeyboard();
+    }
+  },
+
+  scrollTopChange(e) {
+    this.setData({
+      scrollTop: e.detail.value,
+    });
+  },
+  onPageScroll({ scrollTop }) {
+    console.log('onPageScroll', scrollTop);
+  },
+
+
+
+  /**
+   * dd.createSelectorQuery  获取一个节点查询对象 SelectorQuery。基础库 1.4.0+ 支持
+      SelectorQuery
+        selectorQuery.select(selector)      选择当前第一个匹配选择器的节点，选择器支持 id 选择器以及 class 选择器。
+        selectorQuery.selectAll(selector)   选择当前第一个匹配选择器的节点，选择器支持 id 选择器以及 class 选择器。
+        selectorQuery.selectViewport()      选择窗口对象。
+        selectorQuery.boundingClientRect()  将当前选择节点的位置信息放入查询结果，类似 dom 的 getBoundingClientRect， 
+                                             返回对象包含 width/height/left/top/bottom/right。如果当前节点为窗口对象则只返回 width/height。
+        selectorQuery.scrollOffset()        将当前选择节点的滚动信息放入查询结果，返回对象包含 scrollTop/scrollLeft。  
+        selectorQuery.exec(callback)        将查询结果放入 callback 回调中。查询结果为数组，每项为一次查询的结果，如果当前是节点列表，则单次查询结果也为数组。
+                                             注意 exec 必须放到 Page onReady 后调用
+  */
+ 
 })
