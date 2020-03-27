@@ -85,7 +85,9 @@
 
 
 
-
+<view class="viewEnd">
+  {{c.count}}
+</view>
 
 
 

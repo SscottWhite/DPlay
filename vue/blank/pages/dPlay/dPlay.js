@@ -45,7 +45,7 @@ Page({
       dd.stopPullDownRefresh()
     },
     retu(){
-      dd.redirectTo({url:"/pages/vue/vue?count=100"})
+      dd.redirectTo({url:"/pages/vue/vue?count=100&one=111"})
     },
   
   scrollupper(e){

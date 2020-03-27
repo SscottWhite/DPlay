@@ -44,7 +44,7 @@
     },
     {
         "pagePath": "pages/JSAPI/jsa",
-        "name": "ddP",
+        "name": "jsa",
         "icon": "image/icon_API_HL.png",
         "activeIcon": "image/icon_biz.png"
     }]

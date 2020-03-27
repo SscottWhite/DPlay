@@ -1,3 +1,4 @@
 {
-  "defaultTitle": "JSA"
+  "defaultTitle": "JSA",
+  "pullRefresh": true
 }

@@ -5,4 +5,12 @@
     <button onTap="getAuth" size="default" type="primary">
       getAuth
     </button>
+
+    <button onTap="action" size="default" type="primary">
+      action
+    </button>
+
+    <button onTap="time" size="default" type="primary">
+      time
+    </button>
 </view>

@@ -406,3 +406,7 @@ onMessage    EventHandler  网页向小程序 postMessage 消息。e.detail = { 
 <web-view id="web-view-1" src="https://open.dingtalk.com/mobile" onMessage="test"></web-view>
 -->
 
+
+<view class="viewEnd">
+  {{c.count}}
+</view>
