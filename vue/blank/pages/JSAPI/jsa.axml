@@ -13,4 +13,12 @@
     <button onTap="time" size="default" type="primary">
       time
     </button>
+
+    <view animation="{{animation1}}" style="background:yellow;height:100rpx;width:100rpx">
+      onshow
+    </view>
+    <button onTap="animationTap" size="default" type="primary">
+      animationTap
+    </button>
+    
 </view>

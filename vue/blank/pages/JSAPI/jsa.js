@@ -1,5 +1,5 @@
 Page({
-
+   
 /**
 dd.getRecorderManager  获取当前小程序全局唯一的录音管理器 recordManager。
 const recorderManager = dd.getRecorderManager()
@@ -159,5 +159,29 @@ dd.chooseVideo 拍摄视频或从手机相册中选视频
         })
       }
     })
+  },
+
+  /**
+   * dd.createAnimation 
+   * 创建动画实例animation。调用实例的方法来描述动画，最后通过动画实例的export方法将动画数据导出并传递给组件的animation属性.
+   * 注意: export 方法调用后会清掉之前的动画操作
+   * 
+   * var animation = dd.createAnimation({})
+   *     animation   动画实例可以调用以下方法来描述动画，调用结束后会返回实例本身，支持链式调用的写法。
+   * 
+   * animation.scale(3,3).rotate(60).step();
+   *   调用动画操作方法后需要要调用 step() 来表示一组动画完成
+   * 
+   */
+  onReady(){
+    this.animation1 = dd.createAnimation()
+  },
+  animationTap(){
+     this.animation1.rotate(Math.random() * 720 - 360).step()
+     this.setData({ 
+       animation1: this.animation1.export() 
+    })   
   }
+  
+
 })
