@@ -1,6 +1,10 @@
 Page({
     data:{
-      scrollTop:0
+      scrollTop:0,
+      loca:{
+        longi:"",  //经度
+        lati:""   //纬度
+      }
     },
     
 /**
@@ -241,4 +245,218 @@ dd.chooseVideo 拍摄视频或从手机相册中选视频
                                              注意 exec 必须放到 Page onReady 后调用
   */
  
+ 
+ /**
+  * dd.getLocation   获取用户当前的地理位置信息
+  *     cacheTimeout    Number	  否	钉钉客户端经纬度定位缓存过期时间，单位秒。默认 30s。使用缓存会加快定位速度，缓存过期会重新定位。
+        type            Number	  否	0：获取经纬度； 1：默认，获取经纬度和详细到区县级别的逆地理编码数据
+        success Function	否	调用成功的回调函数
+        {
+                  longitude	String	经度
+                  latitude	String	纬度
+                  accuracy	String	精确度，单位 米
+                  province	String	省份(type>0生效)
+                  city	String	城市(type>0生效)
+                  address	String	格式化地址，如：北京市朝阳区南磨房镇北京国家广告产业园区(type>0生效)
+        }
+        fail    Function	否	调用失败的回调函数 
+        {
+                  错误码描述   error	描述	解决方案
+                  11	请确认定位相关权限已开启	提示用户打开定位权限
+                  12	网络异常，请稍后再试	提示用户检查当前网络
+                  13	定位失败，请稍后再试	
+                  14	业务定位超时	提示用户再次尝试
+        }
+        complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）
+        
+        
+        
+
+        
+    dd.openLocation 使用内置地图查看位置{
+        longitude	    String	  是	经度
+        latitude	    String  	是	纬度
+        address      	String	  是	地址的详细说明
+        success	      Function	否	调用成功的回调函数
+        fail	        Function	否	调用失败的回调函数
+        complete	    Function	否	调用结束的回调函数（调用成功、失败都会执行）
+  */
+
+//这个拿手机调试
+ location(){
+   dd.getLocation({
+     success:(e)=>{
+       console.log(e),
+       dd.alert({
+          content:e
+       }),
+       this.setData({      
+         loca:{
+           longi:e.longitude,
+           lati:e.latitude
+         },
+         testone:"测试test"
+       })
+     }
+   })
+ },
+
+
+ 
+ /**  缓存
+ dd.setStorage   将数据存储在本地缓存中指定的 key 中，会覆盖掉原来该 key 对应的数据。
+  *   注意：单条数据转换成字符串后，字符串长度最大200*1024。同一个钉钉用户，同一个小程序缓存总上限为10MB
+  {
+          key      	String        	是	缓存数据的key
+          data	    Object/String  	是	要缓存的数据
+          success	  Function       	否	调用成功的回调函数
+          fail    	Function      	否	调用失败的回调函数
+          complete	Function	      否	调用结束的回调函数（调用成功、失败都会执行）
+    }
+ dd.setStorageSync
+    {
+      同步将数据存储在本地缓存中指定的 key 中。同步数据IO操作可能会影响小程序流畅度，建议使用异步接口，或谨慎处理调用异常。
+      key	  String	      是	缓存数据的key
+      data	Object/String	是	要缓存的数据
+    }
+ dd.getStorage
+    {
+      获取缓存数据。
+        key	      String  	是	缓存数据的key
+        success	  Function	否	调用成功的回调函数
+        {
+            data	Object/String	  key对应的内容（不存在时返回 null）
+        }
+        fail    	Function	否	调用失败的回调函数
+        complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）   
+    }
+ dd.getStorageSync
+    {
+      同步获取缓存数据。同步数据IO操作可能会影响小程序流畅度，建议使用异步接口，或谨慎处理调用异常。
+      {
+        key	  String     	是	  缓存数据的key
+        返回值
+        data 	Object/String	  key对应的内容（不存在时返回 null）
+      }
+    }
+ dd.removeStorage
+    {
+      删除缓存数据。
+      key	      String	  是	缓存数据的key
+      success	  Function	否	调用成功的回调函数
+      fail	    Function	否	调用失败的回调函数
+      complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）
+    }
+ dd.removeStorageSync
+    {
+        同步删除缓存数据。同步数据IO操作可能会影响小程序流畅度，建议使用异步接口，或谨慎处理调用异常。
+         返回值{
+            key	String	是	缓存数据的key
+        }
+    }
+  */
+
+
+/**
+ * dd.getSystemInfo
+ * {
+ *  success   Function	否	调用成功的回调函数
+ *  {
+ *    返回值 {
+ *        model           String 手机型号
+          pixelRatio      Number 设备像素比
+          windowWidth     Number 窗口宽度
+          windowHeight    Number 窗口高度
+          language        String 钉钉设置的语言
+          version         String 钉钉版本号
+          storage         String 设备磁盘容量
+          currentBattery  String 当前电量百分比
+          system          String 系统版本
+          platform        String 系统名：Android，iOS
+          screenWidth     Number 屏幕宽度
+          screenHeight    Number 屏幕高度
+          brand           String 手机品牌
+          fontSizeSetting Number 用户设置字体大小
+          *      }
+ *  }
+    fail  	  Function	否	调用失败的回调函数
+    complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）
+ * }
+  dd.getSystemInfoSync   返回值同 getSystemInfo success 回调参数     (参数同上)
+ */
+
+
+/**
+dd.getNetworkType  获取网络状态。
+  {
+    success	  Function	否	调用成功的回调函数
+    {返回值
+     networkAvailable	Boolean	网络是否可用
+     networkType    	String	网络类型值 UNKNOWN / NOTREACHABLE / WIFI / 3G / 2G / 4G / WWAN
+    }
+    fail   	  Function	否	调用失败的回调函数
+    complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）
+  }
+ */
+
+/**
+ * 
+ * dd.getClipboard   获取剪切板数据{      
+      success	  Function	否	调用成功的回调函数
+      { success返回值
+          text	String	剪切板数据
+      }
+      fail	    Function	否	调用失败的回调函数
+      complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）
+ * }
+   dd.setClipboard 设置剪切板数据。{
+       text	    String   	是	剪切板数据
+       success	Function	否	调用成功的回调函数
+       fail	    Function	否	调用失败的回调函数
+       complete	Function	否	调用结束的回调函数（调用成功、失败都会执行）
+   }
+ */
+
+
+/**
+ * dd.vibrate  调用震动功能
+ */
+
+
+/**
+ * dd.scan   调用扫一扫功能。
+ *  type String 否 扫码样式(默认 qr)： qr，扫码框样式为二维码扫码框 ; bar，扫码样式为条形码扫码框
+    success Function 否 调用成功的回调函数
+    {
+      success返回值 
+      code String 扫码所得数据
+      qrCode String 扫描二维码时返回二维码数据
+      barCode String 扫描条形码时返回条形码数据
+    }
+    fail Function 否 调用失败的回调函数{
+      错误码  error  描述
+      10 用户取消
+      11 操作失败
+    }
+    complete Function 否 调用结束的回调函数（调用成功、失败都会执行）
+ */
+
+/**
+onShareAppMessage
+在 Page 中定义 onShareAppMessage 函数，设置该页面的分享信息。
+（1）onShareAppMessage 函数用来自定义分享内容。
+（2）如果 Page 中定义了 onShareAppMessage 函数那么该页面右上角菜单中会显示“分享”按钮，否则不显示。
+（3）用户点击分享按钮的时候会调用。
+（4）此事件需要 return 一个 Object，用于自定义分享内容。
+{
+    title      	String	是	自定义分享标题
+    desc	      String	否	自定义分享描述
+    path	      String	是	自定义分享页面的路径，path中的自定义参数可在小程序生命周期的onLoad方法中获取（参数传递遵循http get的传参规则）
+    imageUrl    String	否	自定义分享图片(只支持网络图片路径)
+    fallbackUrl	String	否	可降级 H5 URL，仅适用于企业应用。
+          当前钉钉桌面客户端不支持打开企业类小程序，配置此设置后，在桌面端访问此企业应用时，会打开fallbackUrl配置的H5 URL。
+    desktopContainerType	String	否	当前只支持 "side_panel" , 表示在 桌面端使用 side_panel 钉钉容器打开 fallbackUrl 。
+          需要和 fallbackUrl 配合使用 
+}
+ */
 })

@@ -31,4 +31,8 @@
       <!--scroll up-->
       <input type="text" placeholder="key" name="key" value="{{scrollTop}}" onInput="scrollTopChange"></input>
       <view style="height:1000px"/>
+
+    <view class="location" onTap="location">
+      地图:{{loca.longi}} {{loca.lati}}  {{testone}}
+    </view>  
 </view>
